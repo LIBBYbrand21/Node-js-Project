@@ -1,29 +1,29 @@
-const mogoose=require('mogoose');
-const Donate=require('../models/donate');
+const mogoose = require('mogoose');
+const Donate = require('../models/donate');
 
 class DonateRepo {
     constructor() {
         //debugger.connect();
     }
-//get all donates
-async getAll() {
+    //get all donates
+    async getAll() {
 
-}
-//get donate by id
-async getById(id){
+    }
+    //get donate by id
+    async getById(id) {
 
-}
-//add donate
-async addDonate() {
+    }
+    //add donate
+    async addDonate() {
 
-}
-//update donate
-async updateDonate(){
+    }
+    //update donate
+    async updateDonate() {
 
-}
-//delete donate
-async deleteDonate(){
+    }
+    //delete donate
+    async deleteDonate() {
 
-}
+    }
 }
 module.exports = new DonateRepo();
