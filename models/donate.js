@@ -2,22 +2,15 @@ const mongoose = require('mongoose');
 
 //מתרימים
 
-const donateSchema = mongoose.Schema({
-    name: String,
-    phone: String,
-    target: Number,
-    get: Number,
-    group: Number
-})
+const donateSchema = mongoose.Schema(
+    {
+        _id: Number,
+        name: String,
+        group: Number,
+        terget: Number
+      }
+);
 
-const Donate = mongoose.model('Donates', donateSchema);
+const Donate = mongoose.model('donates', donateSchema);
 
 module.exports = Donate;
-// const saleSchema = mongoose.Schema({
-//     saleDate:Date,
-//     storeLocation:String
-// })
-
-// const Donate=mongoose.model('sales',saleSchema);
-
-// module.exports=Donate;

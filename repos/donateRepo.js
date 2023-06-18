@@ -8,7 +8,7 @@ class DonateRepo {
     }
     //get all donates
     async getAll() {
-        return await Donate();
+        return await Donate.find({});
     }
     //get donate by id
     async getById(id) {

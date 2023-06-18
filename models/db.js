@@ -1,14 +1,15 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
 
-const connect=async()=>{
+const connect = async () => {
     //await mongoose.connect(process.env.DATABASE_URL)
-    await mongoose.connect("mongodb+srv://LibbyMark:Libby058328@cluster0.gipdum1.mongodb.net/sample_supplies")
+    await mongoose.connect("mongodb+srv://LibbyMark:Libby058328@cluster0.gipdum1.mongodb.net/Maching")
+    
     console.log('connected');
 }
 
 
-const disconnect=()=>{};
+const disconnect = () => { };
 
-module.exports={connect, disconnect}
+module.exports = { connect, disconnect }
 

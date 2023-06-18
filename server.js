@@ -1,16 +1,18 @@
 const express=require('express');
-// require('dotenv').config();
+require('dotenv').config();
 
 const logger=require('./middlewares/logger');
 const donates=require('./routes/Donates');
+const donors=require('./routes/Donors');
 
 const app=express();
-const port= 4000;
+const port=process.env.PORT || 3000;
 
 app.use(logger('start'));
 app.use(express.json());
 
 app.use('/api/donates', donates);
+app.use('/api/donors', donors);
 
 app.use((err,req,res,next)=>{
     console.error(err.stack);
