@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 //get all groupes
+
 //get group by id
 //add group
 //update group

@@ -17,8 +17,8 @@ app.use('/api/donors', donors);
 app.use((err,req,res,next)=>{
     console.error(err.stack);
     res.status(500).send('Something break!')
-})
+});
 
 app.listen(port,()=>{
     console.log(`I am up in http://127.0.0.1:${port}`);
-})
+});
