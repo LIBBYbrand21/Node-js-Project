@@ -1,11 +1,11 @@
 const express=require('express');
-require('dotenv').config();
+// require('dotenv').config();
 
 const logger=require('./middlewares/logger');
 const donates=require('./routes/Donates');
 
 const app=express();
-const port=process.env.PORT||3000;
+const port= 4000;
 
 app.use(logger('start'));
 app.use(express.json());

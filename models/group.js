@@ -1,12 +1,12 @@
-const mongoose = require('mogoose');
+const mongoose = require('mongoose');
 
 //תרומות
 
 const groupSchema = mongoose.Schema(
     {
-        _id: Int32Array,
+        _id: Number,
         name: String,
-        get: Int32Array,
+        get: Number
     })
 
 const Group = mongoose.model('groups', groupSchema);

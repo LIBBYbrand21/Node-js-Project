@@ -1,13 +1,13 @@
-const mongoose = require('mogoose');
+const mongoose = require('mongoose');
 
 //תרומות
 
 const donorSchema = mongoose.Schema(
     {
-     _id:Int32Array,
+     _id:Number,
     name:String,
-    sum:Int32Array,
-    donate:Int32Array
+    sum:Number,
+    donate:Number
     })
 
 const Donor=mongoose.model('donors',donorSchema);

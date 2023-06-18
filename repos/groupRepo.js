@@ -1,4 +1,5 @@
-const mogoose = require('mogoose');
+const db=require('../models/db');
+const mongoose = require('mongoose');
 const Group = require('../models/group');
 
 class GroupRepo {

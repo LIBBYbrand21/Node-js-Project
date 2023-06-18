@@ -1,13 +1,14 @@
-const mogoose = require('mogoose');
+const db=require('../models/db');
 const Donate = require('../models/donate');
 //מתרימים
+
 class DonateRepo {
     constructor() {
         db.connect();
     }
     //get all donates
     async getAll() {
-        return await Donate.find({});
+        return await Donate();
     }
     //get donate by id
     async getById(id) {
