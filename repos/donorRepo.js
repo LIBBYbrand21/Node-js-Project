@@ -3,11 +3,11 @@ const Donor = require('../models/donor');
 
 class DonorRepo {
     constructor() {
-        //debugger.connect();
+        db.connect();
     }
     //get all donors, query string
     async getAll() {
-
+        return await Donor.find({});
     }
     //add donor
     async addDonor() {
