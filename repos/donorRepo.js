@@ -1,4 +1,4 @@
-const db=require('../models/db');
+const db = require('../models/db');
 const mongoose = require('mongoose');
 const Donor = require('../models/donor');
 
@@ -10,16 +10,16 @@ class DonorRepo {
     async getAll() {
         return await Donor.find({});
     }
-     //get by id
-     async getById(id) {
-        return await Donor.find({_id:id});
-     }
-      //get by donate
+    //get by id
+    async getById(id) {
+        return await Donor.findOne({ _id: id });
+    }
+    //get by donate
     async getByDonate(donate_id) {
-        return await Donor.find({donate:donate_id});
+        return await Donor.find({ donate: donate_id });
     }
     //add donor
-    async addDonor() {
+    async addDonor(donor) {
 
     }
 }

@@ -14,8 +14,8 @@ class DonorService {
         return await donorRepo.getByDonate(id);
     }
     //add donor
-    async addDonor() {
-        return await donorRepo.addDonor();
+    async addDonor(donor) {
+        return await donorRepo.addDonor(donor);
     }
 }
 module.exports=new DonorService();
