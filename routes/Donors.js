@@ -9,7 +9,17 @@ router.get('/',async(req,res,next)=>{
     console.log(allDonors.length);
     res.json(allDonors);
 })
-//add donor
 //get by id
+router.get('/:id',async(req,res,next)=>{
+    let DonorById=await donorService.getById(req.params.id);
+    res.json(DonorById);
+})
+//get by donate
+router.get('/donate/:donate_id',async(req,res,next)=>{
+    let DonorById=await donorService.getByDonate(req.params.donate_id);
+    console.log(DonorById.length);
+    res.json(DonorById);
+})
+//add donor
 
 module.exports=router;

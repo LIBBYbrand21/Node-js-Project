@@ -12,7 +12,7 @@ class GroupRepo {
     }
     //get group by id
     async getById(id) {
-
+        return await Group.find({_id:id})
     }
     //add group
     async addGroup() {

@@ -10,9 +10,13 @@ class DonateRepo {
     async getAll() {
         return await Donate.find({});
     }
-    //get donate by id
+    //get donate by 
     async getById(id) {
-        return await Donate.find({});
+        return await Donate.find({_id:id});
+    }
+    //get donate by group
+    async getByGroup(group_id) {
+        return await Donate.find({group:group_id});
     }
     //add donate
     async addDonate() {

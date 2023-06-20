@@ -10,12 +10,16 @@ class DonorRepo {
     async getAll() {
         return await Donor.find({});
     }
+     //get by id
+     async getById(id) {
+        return await Donor.find({_id:id});
+     }
+      //get by donate
+    async getByDonate(donate_id) {
+        return await Donor.find({donate:donate_id});
+    }
     //add donor
     async addDonor() {
-
-    }
-    //get by id
-    async getById(id) {
 
     }
 }

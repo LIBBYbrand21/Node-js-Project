@@ -5,13 +5,17 @@ class DonorService {
     async getAll() {
         return await donorRepo.getAll();
     }
+     //get by id
+     async getById(id) {
+        return await donorRepo.getById(id);
+    }
+     //get by donate
+     async getByDonate(id) {
+        return await donorRepo.getByDonate(id);
+    }
     //add donor
     async addDonor() {
         return await donorRepo.addDonor();
-    }
-    //get by id
-    async getById(id) {
-        return await donorRepo.getById();
     }
 }
 module.exports=new DonorService();

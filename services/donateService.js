@@ -10,6 +10,10 @@ class DonateService {
     async getById(id) {
         return await donateRepo.getById(id);
     }
+    //get donate by group
+    async getByGroup(id) {
+        return await donateRepo.getByGroup(id);
+    }
     //add donate
     async addDonate() {
         return await donateRepo.addDonate();

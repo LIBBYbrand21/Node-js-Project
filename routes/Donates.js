@@ -12,6 +12,17 @@ router.get('/',async(req,res,next)=>{
     res.json(allDonates);
 })
 //get donate by id
+router.get('/:donate_id',async(req,res,next)=>{
+    let donateById=await donateService.getById(req.params.donate_id);
+    console.log(donateById.length);
+    res.json(donateById);
+})
+//get donate by group
+router.get('/group/:group_id',async(req,res,next)=>{
+    let donatesByGroup=await donateService.getByGroup(req.params.group_id);
+    console.log(donatesByGroup.length);
+    res.json(donatesByGroup);
+})
 //add donate
 //update donate
 //delete donate

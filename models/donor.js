@@ -4,11 +4,12 @@ const mongoose = require('mongoose');
 
 const donorSchema = mongoose.Schema(
     {
-    name:String,
-    sum:Number,
-    donate:Number
+        _id: Number,
+        name: String,
+        sum: Number,
+        donate: Number
     })
 
-const Donor=mongoose.model('Donors',donorSchema);
+const Donor = mongoose.model('donors', donorSchema);
 
-module.exports=Donor;
+module.exports = Donor;

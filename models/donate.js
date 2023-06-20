@@ -7,7 +7,8 @@ const donateSchema = mongoose.Schema(
         _id: Number,
         name: String,
         group: Number,
-        terget: Number
+        terget: Number,
+        get:Number
       }
 );
 
