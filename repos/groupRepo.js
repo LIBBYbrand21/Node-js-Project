@@ -15,16 +15,12 @@ class GroupRepo {
         return await Group.find({_id:id})
     }
     //add group
-    async addGroup() {
-
+    async addGroup(group) {
+        return await Group.create(group);
     }
     //update group
-    async updateGroup() {
-
-    }
-    //delete group
-    async deleteGroup() {
-
+    async updateGroup(id,groupe) {
+        return await Group.findByIdAndUpdate(id,groupe);
     }
 }
 module.exports = new GroupRepo();

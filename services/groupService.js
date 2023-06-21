@@ -17,9 +17,5 @@ class GroupService {
     async updateGroup() {
         return await groupRepo.updateGroup();
     }
-    //delete group
-    async deleteGroup() {
-        return await groupRepo.deleteGroup();
-    }
 }
 module.exports=new GroupService();

@@ -1,4 +1,4 @@
-const db=require('../models/db');
+const db = require('../models/db');
 const Donate = require('../models/donate');
 //מתרימים
 
@@ -10,25 +10,26 @@ class DonateRepo {
     async getAll() {
         return await Donate.find({});
     }
-    //get donate by 
+    //get donate by id
     async getById(id) {
-        return await Donate.find({_id:id});
+        return await Donate.find({ _id: id });
     }
     //get donate by group
     async getByGroup(group_id) {
-        return await Donate.find({group:group_id});
+        return await Donate.find({ group: group_id });
     }
     //add donate
-    async addDonate() {
-
+    async addDonate(donate) {
+        return await Donate.create(donate);
     }
     //update donate
-    async updateDonate() {
-
+    async updateDonate(id, donate) {
+         await Donate.findByIdAndUpdate(id, donate);
+         return Donate.find({ _id: id });
     }
     //delete donate
-    async deleteDonate() {
-
+    async deleteDonate(id) {
+        return await Donate.deleteOne(id);
     }
 }
 module.exports = new DonateRepo();

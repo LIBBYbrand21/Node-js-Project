@@ -1,4 +1,5 @@
 const donorRepo = require('../repos/donorRepo');
+const donateService = require('../services/donateService');
 
 class DonorService {
     //get all donors, query string
@@ -15,7 +16,12 @@ class DonorService {
     }
     //add donor
     async addDonor(donor) {
-        return await donorRepo.addDonor(donor);
+         await donorRepo.addDonor(donor);
+        //  let donate=await donateService.getById(donor.donate);
+        //  if(donate.get){
+        //     await donateService.updateDonate(donor.donate,{get:(donor.sum+(donate.get.value*1))});
+        //  }
+         return donor;
     }
 }
 module.exports=new DonorService();
