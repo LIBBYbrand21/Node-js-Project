@@ -7,7 +7,7 @@ const Donor = require('../models/donor');
 
 //let donorMaxId=110;
 let donorMaxId= Donor.findOne().sort('_id').exec(function(err, item) {
-    item._id //is the max value
+    item.select('_id') //is the max value
 })
 //get all donors, query string
 router.get('/', async (req, res, next) => {
@@ -29,7 +29,7 @@ router.get('/donate/:donate_id', async (req, res, next) => {
 //add donor
 router.post('/createDonor', async (req, res, next) => {
     if (req.body) {
-       // req.body._id=donorMaxId*1;
+       req.body._id=donorMaxId*1;
         let newDonor = req.body;
         let createDonor = await donorService.addDonor(newDonor);
         logger(`a new donor by ${newDonor.name} sum of donor ${newDonor.sum},`);
