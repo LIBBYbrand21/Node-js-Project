@@ -17,7 +17,7 @@ router.get('/:id', async (req, res, next) => {
     res.json(groupById);
 })
 //add group
-router.post('/createGroup', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     if (req.body) {
         req.body._id = ++maxId;
         let newGroup = req.body;

@@ -18,8 +18,14 @@ app.use('/api/groups', groups);
 
 app.use((err,req,res,next)=>{
     console.error(err.stack);
-    res.status(500).send('Something break!')
+    res.status(500).send('Something break! \n We will contact you later ')
 });
+// app.use( '/*', ( req, res ) => {
+//     const error = new Error( 'Requested path does not exist.' );
+
+//     error.statusCode = 404;
+//     res.status( error.statusCode ).json( new HttpError( error ) );
+// } );
 
 app.listen(port,()=>{
     console.log(`I am up in http://127.0.0.1:${port}`);
