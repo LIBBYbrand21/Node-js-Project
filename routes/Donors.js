@@ -1,4 +1,5 @@
 //תרומות
+
 const express = require('express');
 const logger = require('../middlewares/logger');
 const donorService = require('../services/donorService');
@@ -9,35 +10,49 @@ const Donor = require('../models/donor');
 // let donorMaxId = Donor.findOne().sort('_id').exec(function (err, item) {
 //     item:'_id' //is the max value
 // })
+
+
 //get all donors, query string
 router.get('/', async (req, res, next) => {
-    try{
+    try {
         let allDonors = await donorService.getAll();
         await res.status(200).json(allDonors);
-       // res.json(allDonors);
-    }catch (err) {
+    } catch (err) {
         next(err);
     }
-
 })
 //get by id
 router.get('/:id', async (req, res, next) => {
-    let DonorById = await donorService.getById(req.params.id);
-    res.json(DonorById);
+    try {
+        let DonorById = await donorService.getById(req.params.id);
+        await res.status(200).json(DonorById);
+    } catch (err) {
+        next(err);
+    }
 })
-//get donors by donate
+//get donors by donate id
 router.get('/donate/:donate_id', async (req, res, next) => {
-    let DonorById = await donorService.getByDonate(req.params.donate_id);
-    res.json(DonorById);
+    try {
+        let DonorByDonate = await donorService.getByDonate(req.params.donate_id);
+        await res.status(200).json(DonorByDonate);
+    }
+    catch (err) {
+        next(err);
+    }
 })
 //add donor
 router.post('/', async (req, res, next) => {
-    if (req.body) {
-        req.body._id = donorMaxId * 1;
-        let newDonor = req.body;
-        let createDonor = await donorService.addDonor(newDonor);
-        console.log(`a new donation by ${newDonate.name}, sum of donation: ${newDonate.sum},`);
-        res.json(createDonor);
+    try {
+        if (req.body) {
+          //  req.body._id=0;
+            let newDonor = req.body;
+            let createDonor = await donorService.addDonor(newDonor);
+            console.log(`a new donation by ${newDnor.name}, sum of donation: ${newDonor.sum},`);
+            await res.status(200).json(createDonor);
+        }
+    } catch (err) {
+        next(err);
+        //res.status(500).json('Something break!  We will contact you later.')
     }
 })
 module.exports = router;

@@ -1,5 +1,4 @@
 const campainRepo = require('../repos/campainRepo');
-const CampainRepo = require('../repos/campainRepo');
 
 class CampainService {
 
@@ -9,9 +8,9 @@ class CampainService {
     }
     
     //change...
-    async change_update(id) {
-        return await campainRepo.change_update({_id:id});
+    async change_update(myChange) {
+        return await campainRepo.change_update(myChange);
     }
 }
 
-module.exports=new CampainRepo();
+module.exports=new CampainService();

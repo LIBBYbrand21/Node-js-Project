@@ -3,34 +3,49 @@
 const express = require('express');
 const groupService = require('../services/groupService');
 const router = express.Router();
-maxId=302;
+//maxId = 302;
 
 //get all groupes
 router.get('/', async (req, res, next) => {
-    let allGroups = await groupService.getAll();
-    console.log(allGroups.length);
-    res.json(allGroups);
+    try {
+        let allGroups = await groupService.getAll();
+        await res.status(200).json(allGroups);
+    } catch (err) {
+        next(err);
+    }
 })
 //get group by id
 router.get('/:id', async (req, res, next) => {
-    let groupById = await groupService.getById(req.params.id);
-    res.json(groupById);
+    try {
+        let groupById = await groupService.getById(req.params.id);
+        await res.status(200).json(groupById);
+    } catch (err) {
+        next(err);
+    }
 })
 //add group
 router.post('/', async (req, res, next) => {
-    if (req.body) {
-        req.body._id = ++maxId;
-        let newGroup = req.body;
-        let createGroup = await groupService.addGroup(newGroup);
-        console.log(`a new group by name ${newGroup.name} ,`);
-        res.json(createGroup);
+    try {
+        if (req.body) {
+            //req.body._id = ++maxId;
+            let newGroup = req.body;
+            console.log(newGroup._id);
+            let createdGroup = await groupService.addGroup(newGroup);
+            console.log(`a new group by name ${newGroup.name} ,`);
+            await res.status(200).json(createdGroup);
+        }
+    } catch (err) {
+        next(err);
     }
 })
 //update group
 router.put('/:id', async (req, res, next) => {
-    let groupToUpdate = req.body;
-    let groupUpdate = await groupService.updateGroup(req.params.id, groupToUpdate);
-    console.log(groupUpdate.length);
-    res.json(groupUpdate);
+    try {
+        let groupToUpdate = req.body;
+        let groupUpdate = await groupService.updateGroup(req.params.id, groupToUpdate);
+        await res.status(200).json(groupUpdate);
+    } catch (err) {
+        next(err);
+    }
 })
 module.exports = router;

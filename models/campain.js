@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
 
-//מתרימים
+//פרטי המצ'ינג
 
 const campainSchema = mongoose.Schema(
-    {
-        // _id: Number,
-        // name: String,
-        // group: Number,
-        // terget: Number,
-        // get:Number
-      }
+  {
+    _id:Number,
+    name: String,
+    recived: Number,
+    target: Number,
+    endDate: Date,
+    startDate: Date,
+    password:String
+  }
 );
 
-const Campain = mongoose.model('campain', campainSchema);
+const Campain = mongoose.model('campains', campainSchema);
 
 module.exports = Campain;

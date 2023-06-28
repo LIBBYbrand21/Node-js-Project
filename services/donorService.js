@@ -18,9 +18,7 @@ class DonorService {
     async addDonor(donor) {
          await donorRepo.addDonor(donor);
         //  let donate=await donateService.getById(donor.donate);
-        //  if(donate.get){
-        //     await donateService.updateDonate(donor.donate,{get:(donor.sum+(donate.get.value*1))});
-        //  }
+        //   await donateService.updateDonate(donor.donate,{get:(donor.sum+(donate.get.value*1))});
          return donor;
     }
 }

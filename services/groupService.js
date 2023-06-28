@@ -10,12 +10,12 @@ class GroupService {
         return await groupRepo.getById(id);
     }
     //add group
-    async addGroup() {
-        return await groupRepo.addGroup();
+    async addGroup(group) {
+        return await groupRepo.addGroup(group);
     }
     //update group
-    async updateGroup() {
-        return await groupRepo.updateGroup();
+    async updateGroup(id,groupChange) {
+        return await groupRepo.updateGroup(id,groupChange);
     }
 }
 module.exports=new GroupService();

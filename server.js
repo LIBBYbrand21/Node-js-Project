@@ -5,6 +5,7 @@ const logger=require('./middlewares/logger');
 const donates=require('./routes/Donates');
 const donors=require('./routes/Donors');
 const groups=require('./routes/Groups');
+const campains = require('./routes/Campains');
 
 const app=express();
 const port=process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/donates', donates);
 app.use('/api/donors', donors);
 app.use('/api/groups', groups);
+app.use('/api/campains', campains);
 
 app.use((err,req,res,next)=>{
     console.error(err.stack);
