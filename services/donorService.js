@@ -6,21 +6,22 @@ class DonorService {
     async getAll() {
         return await donorRepo.getAll();
     }
-     //get by id
-     async getById(id) {
+    //get by id
+    async getById(id) {
         return await donorRepo.getById(id);
     }
-     //get by donate
-     async getByDonate(id) {
+    //get by donate
+    async getByDonate(id) {
         return await donorRepo.getByDonate(id);
     }
     //add donor
     async addDonor(donor) {
-        let newDonor= await donorRepo.addDonor(donor);
-         //כאן צריך לעדכן גם סכום שמתרים התרים ולא הצלחתי לגשת למשתנה get שלו כדי להוסיף עליו ולא להחליף לגמרי
-        //  let donate=await donateService.getById(donor.donate);
-        //   await donateService.updateDonate(donor.donate,{get:(donor.sum+(donate.get.value*1))});
-         return newDonor;
+        let newDonor = await donorRepo.addDonor(donor);
+        let donate = await donateService.getById(donor.donate);
+        console.log(donate[0].get);
+        await donateService.updateDonate(donor.donate, { 'get': (donor.sum + (donate[0].get)) });
+        // await donateService.updateDonate(donor.donate, { 'get':donor.sum});
+        return newDonor;
     }
 }
-module.exports=new DonorService();
+module.exports = new DonorService();

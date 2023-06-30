@@ -38,8 +38,9 @@ router.get('/donate/:donate_id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
-            let donorMaxId = await Donor.find().sort({ _id: -1 }).limit(1)
-            //req.body._id = ++donorMaxId._id;
+            let donorMaxId = await Donor.find().sort('-_id').limit(1)
+            // console.log(donorMaxId[0]._id)
+            req.body._id = ++donorMaxId[0]._id;
             let newDonor = req.body;
             let createDonor = await donorService.addDonor(newDonor);
             console.log(`a new donation by ${createDonor.name}, sum of donation: ${createDonor.sum},`);

@@ -29,7 +29,8 @@ router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
             let groupMaxId = await Group.find().sort({ _id: -1 }).limit(1)
-            // req.body._id = ++groupMaxId;
+            // console.log(groupMaxId[0]._id)
+            req.body._id = ++groupMaxId[0]._id;
             let newGroup = req.body;
             console.log(newGroup._id);
             let createdGroup = await groupService.addGroup(newGroup);

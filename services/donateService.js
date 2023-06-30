@@ -27,9 +27,10 @@ class DonateService {
     async updateDonate(id, donate) {
         let newDonate = await donateRepo.updateDonate(id, donate);
         if (donate.get) {
-            //כאן צריך לעדכן גם group...
-            //  let group=await groupService.getById(newDonate.group);
-            //   await groupService.updateGroup(newDonate.group,{get:(newDonate.sum+(group.get.value*1))});
+            let mygroup = await groupService.getById(newDonate.group);
+            console.log(mygroup[0].get);
+            await groupService.updateGroup(newDonate.group, { 'get': (newDonate.get + (mygroup[0].get)) });
+            // await groupService.updateGroup(newDonate.group, { 'get':donate.get});
         }
         return newDonate;
     }

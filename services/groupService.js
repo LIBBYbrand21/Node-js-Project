@@ -18,9 +18,10 @@ class GroupService {
     async updateGroup(id, groupChange) {
         let newGroup = await groupRepo.updateGroup(id, groupChange);
         if (groupChange.get) {
-            //כאן צריך לעדכן סכום שהגיעו בסך הכללי של ה campain...
-            // let campainDetails = await campain.group.getAll();
-            // await campain.updateRechived( { rechived: (groupChange.get + (campainDetails[0].rechived.value * 1)) });
+            let campainDetails = await campain.getAll();
+            console.log(campainDetails[0].rechived);
+            await campain.updateRechived( { 'rechived': (groupChange.get + (campainDetails[0].rechived)) });
+            // await campain.updateRechived( { "rechived": groupChange.get });
         }
         return newGroup;
     }

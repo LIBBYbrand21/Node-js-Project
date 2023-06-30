@@ -3,7 +3,7 @@
 const express = require('express');
 const donateService = require('../services/donateService');
 const router = express.Router();
-const Donate=require('../models/donate')
+const Donate = require('../models/donate')
 
 //get all donates
 router.get('/', async (req, res, next) => {
@@ -38,7 +38,7 @@ router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
             let donateMaxId = await Donate.find().sort({ _id: -1 }).limit(1)
-            // req.body._id = ++donateMaxId;
+            req.body._id = ++donateMaxId[0]._id;
             let newDonate = req.body;
             let createDonate = await donateService.addDonate(newDonate);
             await res.status(200).json(createDonate);
