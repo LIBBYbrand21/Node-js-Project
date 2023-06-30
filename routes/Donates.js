@@ -5,11 +5,6 @@ const donateService = require('../services/donateService');
 const router = express.Router();
 const Donate=require('../models/donate')
 
-//לא מטופל עדיין ה ID המקסימלי
-// let donateMaxId = Donate.findOne().sort('_id').exec(function (err, item) {
-//     item:'_id' //
-// })
-
 //get all donates
 router.get('/', async (req, res, next) => {
     try {
@@ -42,6 +37,7 @@ router.get('/group/:group_id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
+            let donateMaxId = await Donate.find().sort({ _id: -1 }).limit(1)
             // req.body._id = ++donateMaxId;
             let newDonate = req.body;
             let createDonate = await donateService.addDonate(newDonate);

@@ -5,10 +5,6 @@ const groupService = require('../services/groupService');
 const router = express.Router();
 const Group=require('../models/group')
 
-//לא מטופל עדיין ה ID המקסימלי
-// let groupMaxId = Group.findOne().sort('_id').exec(function (err, item) {
-//     item:'_id' 
-// })
 
 //get all groupes
 router.get('/', async (req, res, next) => {
@@ -32,6 +28,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
+            let groupMaxId = await Group.find().sort({ _id: -1 }).limit(1)
             // req.body._id = ++groupMaxId;
             let newGroup = req.body;
             console.log(newGroup._id);

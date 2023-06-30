@@ -16,11 +16,11 @@ class DonorService {
     }
     //add donor
     async addDonor(donor) {
-         await donorRepo.addDonor(donor);
+        let newDonor= await donorRepo.addDonor(donor);
          //כאן צריך לעדכן גם סכום שמתרים התרים ולא הצלחתי לגשת למשתנה get שלו כדי להוסיף עליו ולא להחליף לגמרי
         //  let donate=await donateService.getById(donor.donate);
         //   await donateService.updateDonate(donor.donate,{get:(donor.sum+(donate.get.value*1))});
-         return donor;
+         return newDonor;
     }
 }
 module.exports=new DonorService();

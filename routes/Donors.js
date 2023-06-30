@@ -6,12 +6,6 @@ const donorService = require('../services/donorService');
 const router = express.Router();
 const Donor = require('../models/donor');
 
-//לא מטופל עדיין ה ID המקסימלי
-// let donorMaxId = Donor.findOne().sort('_id').exec(function (err, item) {
-//     item:'_id' 
-// })
-
-
 //get all donors, query string
 router.get('/', async (req, res, next) => {
     try {
@@ -44,10 +38,11 @@ router.get('/donate/:donate_id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
-          //  req.body._id=++donorMaxId;
+            let donorMaxId = await Donor.find().sort({ _id: -1 }).limit(1)
+            //req.body._id = ++donorMaxId._id;
             let newDonor = req.body;
             let createDonor = await donorService.addDonor(newDonor);
-            console.log(`a new donation by ${newDnor.name}, sum of donation: ${newDonor.sum},`);
+            console.log(`a new donation by ${createDonor.name}, sum of donation: ${createDonor.sum},`);
             await res.status(200).json(createDonor);
         }
     } catch (err) {

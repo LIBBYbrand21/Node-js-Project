@@ -20,7 +20,7 @@ class DonorRepo {
     }
     //add donor
     async addDonor(donor) {
-       return await Donor.create(donor,{new:true});
+       return await Donor.create(donor);
     }
 }
 module.exports = new DonorRepo();
