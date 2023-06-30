@@ -20,8 +20,7 @@ class GroupRepo {
     }
     //update group
     async updateGroup(id, groupe) {
-        await Group.findByIdAndUpdate(id, groupe);
-        return await Group.find({ _id: id });
+        return await Group.findByIdAndUpdate(id, groupe, { 'new': true });
     }
 }
 module.exports = new GroupRepo();

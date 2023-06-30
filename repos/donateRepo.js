@@ -24,8 +24,7 @@ class DonateRepo {
     }
     //update donate
     async updateDonate(id, donate) {
-         await Donate.findByIdAndUpdate(id, donate);
-         return Donate.find({ _id: id });
+        return await Donate.findByIdAndUpdate(id, donate, { 'new': true });
     }
     //delete donate
     async deleteDonate(id) {

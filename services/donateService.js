@@ -18,7 +18,7 @@ class DonateService {
     }
     //add donate
     async addDonate(donate) {
-       return await donateRepo.addDonate(donate);
+        return await donateRepo.addDonate(donate);
         //  let group=await groupService.getById(donate.group);
         //   await groupService.updateGroup(donate.group,{get:(donate.sum+(group.get.value*1))});
         // return donate
@@ -26,8 +26,11 @@ class DonateService {
     //update donate
     async updateDonate(id, donate) {
         let newDonate = await donateRepo.updateDonate(id, donate);
-        //  let group=await groupService.getById(newDonate.group);
-        //   await groupService.updateGroup(newDonate.group,{get:(newDonate.sum+(group.get.value*1))});
+        if (donate.get) {
+            //כאן צריך לעדכן גם group...
+            //  let group=await groupService.getById(newDonate.group);
+            //   await groupService.updateGroup(newDonate.group,{get:(newDonate.sum+(group.get.value*1))});
+        }
         return newDonate;
     }
     //delete donate

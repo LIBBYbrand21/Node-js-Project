@@ -6,7 +6,7 @@ const campainSchema = mongoose.Schema(
   {
     _id:Number,
     name: String,
-    recived: Number,
+    rechived: Number,
     target: Number,
     endDate: Date,
     startDate: Date,

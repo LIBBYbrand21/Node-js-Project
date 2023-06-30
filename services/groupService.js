@@ -1,4 +1,5 @@
 const groupRepo = require('../repos/groupRepo');
+const campain = require('../repos/campainRepo')
 
 class GroupService {
     //get all groupes
@@ -14,8 +15,14 @@ class GroupService {
         return await groupRepo.addGroup(group);
     }
     //update group
-    async updateGroup(id,groupChange) {
-        return await groupRepo.updateGroup(id,groupChange);
+    async updateGroup(id, groupChange) {
+        let newGroup = await groupRepo.updateGroup(id, groupChange);
+        if (groupChange.get) {
+            //כאן צריך לעדכן סכום שהגיעו בסך הכללי של ה campain...
+            // let campainDetails = await campain.group.getAll();
+            // await campain.updateRechived( { rechived: (groupChange.get + (campainDetails[0].rechived.value * 1)) });
+        }
+        return newGroup;
     }
 }
-module.exports=new GroupService();
+module.exports = new GroupService();

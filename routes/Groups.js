@@ -3,7 +3,12 @@
 const express = require('express');
 const groupService = require('../services/groupService');
 const router = express.Router();
-//maxId = 302;
+const Group=require('../models/group')
+
+//לא מטופל עדיין ה ID המקסימלי
+// let groupMaxId = Group.findOne().sort('_id').exec(function (err, item) {
+//     item:'_id' 
+// })
 
 //get all groupes
 router.get('/', async (req, res, next) => {
@@ -27,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (req.body) {
-            //req.body._id = ++maxId;
+            // req.body._id = ++groupMaxId;
             let newGroup = req.body;
             console.log(newGroup._id);
             let createdGroup = await groupService.addGroup(newGroup);
