@@ -32,7 +32,7 @@ router.post('/', async (req, res, next) => {
             // console.log(groupMaxId[0]._id)
             req.body._id = ++groupMaxId[0]._id;
             let newGroup = req.body;
-            console.log(newGroup._id);
+            // console.log(newGroup._id);
             let createdGroup = await groupService.addGroup(newGroup);
             console.log(`a new group by name ${newGroup.name} ,`);
             await res.status(200).json(createdGroup);

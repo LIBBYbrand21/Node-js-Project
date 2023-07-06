@@ -1,5 +1,4 @@
 const groupRepo = require('../repos/groupRepo');
-const campain = require('../repos/campainRepo')
 
 class GroupService {
     //get all groupes
@@ -16,14 +15,7 @@ class GroupService {
     }
     //update group
     async updateGroup(id, groupChange) {
-        let newGroup = await groupRepo.updateGroup(id, groupChange);
-        if (groupChange.get) {
-            let campainDetails = await campain.getAll();
-            console.log(campainDetails[0].rechived);
-            await campain.updateRechived( { 'rechived': (groupChange.get + (campainDetails[0].rechived)) });
-            // await campain.updateRechived( { "rechived": groupChange.get });
-        }
-        return newGroup;
+        return await groupRepo.updateGroup(id, groupChange);
     }
 }
 module.exports = new GroupService();

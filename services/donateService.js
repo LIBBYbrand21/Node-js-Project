@@ -1,5 +1,4 @@
 const donateRepo = require('../repos/donateRepo');
-const groupService = require('../services/groupService');
 
 
 class DonateService {
@@ -25,14 +24,7 @@ class DonateService {
     }
     //update donate
     async updateDonate(id, donate) {
-        let newDonate = await donateRepo.updateDonate(id, donate);
-        if (donate.get) {
-            let mygroup = await groupService.getById(newDonate.group);
-            console.log(mygroup[0].get);
-            await groupService.updateGroup(newDonate.group, { 'get': (newDonate.get + (mygroup[0].get)) });
-            // await groupService.updateGroup(newDonate.group, { 'get':donate.get});
-        }
-        return newDonate;
+        return await donateRepo.updateDonate(id, donate);
     }
     //delete donate
     async deleteDonate(id) {
